@@ -44,8 +44,6 @@ class Dot:
 			return '■'
 		else:
 			return '.'
-# def __str__(self):
-# 	return f" {self.x}, {self.y}"
 
 
 # ________________________________________________________________
@@ -64,8 +62,11 @@ class Ship:
 
 	def ship_dots(self):
 		for i in range(self.size):
-			self.dots.append([Dot(self.x + i, self.y, CellState.SHIP)]) if self.turn == 0 \
-				else self.dots.append([Dot(self.x, self.y + i, CellState.SHIP)])
+			self.dots.append(Dot(self.x + i, self.y, CellState.SHIP)) if self.turn == 0 \
+				else self.dots.append(Dot(self.x, self.y + i, CellState.SHIP))
+
+	def __str__(self):
+		return f'{self.dots}'
 
 
 # class Field:
@@ -100,7 +101,6 @@ class Ship:
 
 
 # ________________________________________________________________
-
 s = Ship(1, 1, 3, 0)
 s.ship_dots()
 # print(tuple(map(str, s.get_dots())))
@@ -108,3 +108,10 @@ s.ship_dots()
 # if __name__ == "__main__":
 # 	fil = Field()
 # 	fil.show_field()
+# s = Ship(1, 1, 3, 0)
+# print(tuple(map(str, s.get_dots())))
+
+
+
+
+
