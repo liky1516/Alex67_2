@@ -32,8 +32,8 @@ class Dot:
 		self.y = y
 		self.state = state
 
-	def __eq__(self, other):
-		return self.x == other.x and self.y == other.y
+	def __eq__(self, other_x, other_y):
+		return self.x == other_x and self.y == other_y
 
 	def __str__(self):
 		if self.state == CellState.EMPTY:
@@ -52,7 +52,7 @@ class Ship:
 		self.x = x
 		self.y = y
 		self.size = size
-		self.turn = turn # поворот корабля: 0 - горизонтально, 1 - вертикально
+		self.turn = turn  # поворот корабля: 0 - горизонтально, 1 - вертикально
 		self.state = state
 		self.dots = []
 		self.lives = size
@@ -66,52 +66,47 @@ class Ship:
 				else self.dots.append(Dot(self.x, self.y + i, CellState.SHIP))
 
 
+class Field:
+	def __init__(self):
+		self.cells = [[Dot(x, y, state=CellState.EMPTY) for x in range(1, 7)] for y in range(1, 7)]
+		self.ships = Field.list_ships(self)
+		for i in self.ships:
+			i.ship_dots()
 
+	def list_ships(self):
+		return [
+			Ship(random.randint(1, 6), random.randint(1, 6), 3, random.randint(0, 1)),
+			Ship(random.randint(1, 6), random.randint(1, 6), 2, random.randint(0, 1)),
+			Ship(random.randint(1, 6), random.randint(1, 6), 2, random.randint(0, 1)),
+			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0),
+			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0),
+			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0),
+			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0)
+		]
 
-# class Field:
-# 	def __init__(self):
-# 		self.cells = [[Dot(x, y, state=CellState.EMPTY) for x in range(1, 7)] for y in range(1, 7)]
-# 		self.ships = Field.list_ships
-#
-# 	# self.list_ships()
-# 	@staticmethod
-# 	def list_ships():
-# 		ships = [
-# 			Ship(random.randint(1, 6), random.randint(1, 6), 3, random.randint(0, 1)),
-# 			Ship(random.randint(1, 6), random.randint(1, 6), 2, random.randint(0, 1)),
-# 			Ship(random.randint(1, 6), random.randint(1, 6), 2, random.randint(0, 1)),
-# 			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0),
-# 			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0),
-# 			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0),
-# 			Ship(random.randint(1, 6), random.randint(1, 6), 1, 0)
-# 		]
-#
-# 	def show_field(self):
-# 		print()
-# 		print('    | 1 | 2 | 3 | 4 | 5 | 6 |')
-# 		print('    _________________________')
-# 		for i, row in enumerate(self.cells):
-# 			row_str = f"  {i + 1} | {' | '.join(map(str, row))} | "
-# 			print(row_str)
-# 			print('    _________________________')
-#
-# 	def add_ship(self, ship):
-# 		pass
+	def show_field(self):
+		print()
+		print('    | 1 | 2 | 3 | 4 | 5 | 6 |')
+		print('    _________________________')
+		for i, row in enumerate(self.cells):
+			row_str = f"  {i + 1} | {' | '.join(map(str, row))} | "
+			print(row_str)
+			print('    _________________________')
+
+	def add_ship(self, ship):
+		pass
 
 
 # ________________________________________________________________
-s = Ship(1, 1, 3, 0)
-s.ship_dots()
-print(s.get_ship_dots())
+# s = Ship(1, 1, 3, 0)
+# s.ship_dots()
+# print(s.get_ship_dots())
 # print(tuple(map(str, s.get_dots())))
 
-# if __name__ == "__main__":
-# 	fil = Field()
-# 	fil.show_field()
+if __name__ == "__main__":
+	fil = Field()
+	fil.show_field()
+
+
 # s = Ship(1, 1, 3, 0)
 # print(tuple(map(str, s.get_dots())))
-
-
-
-
-
