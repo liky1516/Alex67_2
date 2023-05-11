@@ -57,6 +57,11 @@ class Ship:
 		self.dots = []
 		self.lives = size
 
+	def __str__(self):
+		rep = Ship.get_ship_dots()
+		for i in rep:
+			print(i)
+
 	def get_ship_dots(self):
 		return self.dots
 
@@ -65,8 +70,7 @@ class Ship:
 			self.dots.append(Dot(self.x + i, self.y, CellState.SHIP)) if self.turn == 0 \
 				else self.dots.append(Dot(self.x, self.y + i, CellState.SHIP))
 
-	def __str__(self):
-		return f'{self.dots}'
+
 
 
 # class Field:
@@ -103,6 +107,7 @@ class Ship:
 # ________________________________________________________________
 s = Ship(1, 1, 3, 0)
 s.ship_dots()
+print(s.get_ship_dots())
 # print(tuple(map(str, s.get_dots())))
 
 # if __name__ == "__main__":
