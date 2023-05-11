@@ -57,11 +57,6 @@ class Ship:
 		self.dots = []
 		self.lives = size
 
-	def __str__(self):
-		rep = Ship.get_ship_dots()
-		for i in rep:
-			print(i)
-
 	def get_ship_dots(self):
 		return self.dots
 
