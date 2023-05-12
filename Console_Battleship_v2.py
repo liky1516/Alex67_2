@@ -57,9 +57,9 @@ class Ship:
 		self.dots = []
 		self.lives = size
 
-	def get_ship_dots(self):
-		for i in range(self.dots):
-			return self.dots
+	# def __getitem__(self, item):
+	# 	for i in range(self.dots):
+	# 		return self.dots[i]
 
 	def ship_dots(self):
 		for i in range(self.size):
