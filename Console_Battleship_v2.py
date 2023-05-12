@@ -76,6 +76,9 @@ class Field:
 		for i in self.ships:
 			i.ship_dots()
 
+
+
+
 	def list_ships(self):
 		return [
 			Ship(random.randint(1, 6), random.randint(1, 6), 3, random.randint(0, 1)),
