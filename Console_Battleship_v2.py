@@ -77,7 +77,8 @@ class Field:
 			i.ship_dots()
 
 
-
+	def __repr__(self):
+		return str(self.ships)
 
 	def list_ships(self):
 		return [
