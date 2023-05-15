@@ -63,6 +63,7 @@ class Ship:
 
 	def ship_dots(self):
 		for i in range(self.size):
+			#self.dots.append(self.field.cells[self.x + i][self.y])
 			self.dots.append(Dot(self.x + i, self.y, CellState.SHIP)) if self.turn == 0 \
 				else self.dots.append(Dot(self.x, self.y + i, CellState.SHIP))
 
